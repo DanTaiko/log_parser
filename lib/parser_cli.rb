@@ -25,7 +25,7 @@ class ParserCLI < Thor
 
   LONGDESC
   def webpages_rating(path)
-    puts 'webpages_rating!'
+    HandlerSet.do_run(__method__, path)
   end
 
   desc 'unique_webpages_rating PATH/TO/FILE', 'list of unique webpages with most page views'
@@ -36,7 +36,7 @@ class ParserCLI < Thor
 
   LONGDESC
   def unique_webpages_rating(path)
-    puts 'unique_webpages_rating!'
+    HandlerSet.do_run(__method__, path)
   end
 
   def self.exit_on_failure?
