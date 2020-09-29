@@ -63,6 +63,6 @@ Run HELP for the command delails
 
 1. Improve the user interface and CLI
 
-2. Made a gem out of this app
+2. Make a gem out of this app
 
 3. Do more testing
