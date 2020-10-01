@@ -21,9 +21,8 @@ class LineParser
   private
 
   def validate_symbol_regex
-    raise(ArgumentError, 'The symbol_regex is invalid.') unless symbol_regex.is_a?(Regexp)
-    return if symbol_regex.named_captures.key?('symbol')
+    return if SymbolRegexValidator.new(symbol_regex: symbol_regex).valid?
 
-    raise(ArgumentError, 'The symbol_regex does not have the "symbol" capture.')
+    raise(ArgumentError, 'The symbol_regex is invalid.')
   end
 end

@@ -7,8 +7,8 @@ class Collector
 
   def initialize(builder:)
     @builder = builder
-    validate_builder
     @members = []
+    validate_builder
   end
 
   def add(symbol)
