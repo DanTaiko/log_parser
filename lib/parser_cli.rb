@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'thor'
-require './lib/parser_config.rb'
+require './lib/log_parser.rb'
 
 ##
 # The basic CLI to the Parser
@@ -25,7 +25,7 @@ class ParserCLI < Thor
 
   LONGDESC
   def webpages_rating(path)
-    HandlerSet.do_run(__method__, path)
+    LogParcer.new(file_path: path).send(__method__)
   end
 
   desc 'unique_webpages_rating PATH/TO/FILE', 'list of unique webpages with most page views'
@@ -36,7 +36,7 @@ class ParserCLI < Thor
 
   LONGDESC
   def unique_webpages_rating(path)
-    HandlerSet.do_run(__method__, path)
+    LogParcer.new(file_path: path).send(__method__)
   end
 
   def self.exit_on_failure?
