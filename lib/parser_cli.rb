@@ -43,5 +43,3 @@ class ParserCLI < Thor
     true
   end
 end
-
-ParserCLI.start(ARGV)

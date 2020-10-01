@@ -2,3 +2,5 @@
 # frozen_string_literal: true
 
 require './lib/parser_cli.rb'
+
+ParserCLI.start(ARGV)
