@@ -1,0 +1,12 @@
+---
+lines:
+  - symbol: /help_page
+    amount: 5
+  - symbol: /home
+    amount: 3
+  - symbol: /about
+    amount: 3
+  - symbol: /contact
+    amount: 2
+  - symbol: /index
+    amount: 1
