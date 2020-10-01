@@ -5,7 +5,11 @@
 class Sorter
   attr_reader :arttibute
 
-  def initialize(arttibute:) end
+  def initialize(arttibute:)
+    @arttibute = arttibute
+  end
 
-  def sort(collection) end
+  def sort(collection)
+    collection.sort! { |one, two| two.send(arttibute) <=> one.send(arttibute) }
+  end
 end
