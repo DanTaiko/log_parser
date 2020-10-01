@@ -2,7 +2,7 @@
 
 Heavy metal log parser is my try to write a ruby script.
 
-## Version 0.1.0-a.1
+## Version 0.1.1-a.2
 
 The alpha-version is for demonstrating my programmer skills.
 
