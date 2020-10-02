@@ -17,7 +17,7 @@ require './lib/log_parser.rb'
 #                             $ bin/parser unique_webpages_rating webserver.log
 #
 class ParserCLI < Thor
-  desc 'webpages_rating PATH/TO/FILE', 'list of webpages with most page views'
+  desc 'webpages_rating [PATH/TO/FILE]', 'list of webpages with most page views'
   long_desc <<-LONGDESC
     This command will parse a logfile and list of the webpages with most page views ordered from most pages views to less page views.
 
@@ -28,7 +28,7 @@ class ParserCLI < Thor
     LogParcer.new(file_path: path).send(__method__)
   end
 
-  desc 'unique_webpages_rating PATH/TO/FILE', 'list of unique webpages with most page views'
+  desc 'unique_webpages_rating [PATH/TO/FILE]', 'list of unique webpages with most page views'
   long_desc <<-LONGDESC
     This command will parse a logfile and list of webpages with most unique page views ordered.
 

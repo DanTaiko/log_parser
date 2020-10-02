@@ -1,2 +1,2 @@
 ERROR: "parser unique_webpages_rating" was called with no arguments
-Usage: "parser unique_webpages_rating PATH/TO/FILE"
+Usage: "parser unique_webpages_rating [PATH/TO/FILE]"

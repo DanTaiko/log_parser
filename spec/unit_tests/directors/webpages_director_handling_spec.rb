@@ -19,7 +19,7 @@ describe 'WebpagesDirector' do
       expect_any_instance_of(Sorter).to receive(:sort).once
       expect_any_instance_of(Presenter).to receive(:prints).once
 
-      expect { director.validate_and_act }.to raise_error(RuntimeError)
+      director.validate_and_act
     end
   end
 end

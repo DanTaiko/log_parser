@@ -20,12 +20,9 @@ class WebpagesDirector
 
   def validate_and_act
     file_validator = FilePresenceValidator.new(file_path: file_path)
-    act and return if file_validator.valid?
+    raise(ArgumentError, file_validator.err_message) unless file_validator.valid?
 
-    err_message = file_validator.err_message
-    raise(ArgumentError, err_message) if err_message
-
-    raise('The WebpagesDirector.act() ends up with an error.')
+    act
   end
 
   private
