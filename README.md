@@ -48,9 +48,9 @@ Run HELP for the command delails
 
 **parser help [COMMAND]**                       # Describe available commands or one specific command
 
-**parser unique_webpages_rating PATH/TO/FILE**  # list of unique webpages with most page views
+**parser unique_webpages_rating [PATH/TO/FILE]**  # list of unique webpages with most page views
 
-**parser webpages_rating PATH/TO/FILE**         # list of webpages with most page views
+**parser webpages_rating [PATH/TO/FILE]**         # list of webpages with most page views
  
 
 ## How to run specs
