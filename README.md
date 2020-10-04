@@ -2,7 +2,7 @@
 
 Heavy metal log parser is my try to write a ruby script.
 
-## Version 0.1.1-a.2
+## Version 0.1.3-a.1
 
 The alpha-version is for demonstrating my programmer skills.
 
@@ -38,6 +38,12 @@ e.g.:
 
 ## How to run app
 
+Basic command:
+
+   ```sh
+    $ bin/parser analyze [PATH/TO/FILE]
+   ```
+   
 Run HELP for the command delails
 
    ```sh
@@ -46,14 +52,18 @@ Run HELP for the command delails
  
 #### Commands:
 
-**parser help [COMMAND]**                       # Describe available commands or one specific command
+**parser help [COMMAND]**                   # Describe available commands or one specific command
 
-**parser unique_webpages_rating [PATH/TO/FILE]**  # list of unique webpages with most page views
+**parser analyze [PATH/TO/FILE]**           # list the webpages with visits and then list the webpages with unique views
 
-**parser webpages_rating [PATH/TO/FILE]**         # list of webpages with most page views
+**parser resources_rating [PATH/TO/FILE]**  # list the resources with most views
+
+**parser webpages_rating [PATH/TO/FILE]**   # list the webpages with most page views
  
 
 ## How to run specs
+
+Run RSPEC in the log_parser directory
 
    ```sh
     $ rspec
@@ -61,8 +71,16 @@ Run HELP for the command delails
 
 ## Possible Improvements (ideas)
 
-1. Improve the user interface and CLI
+1. Improve the user interface and CLI, especially the error handling.
 
-2. Make a gem out of this app
+2. The Line class should be splitted into the LogLine and PrintLine classes.
 
-3. Do more testing
+3. Do more integration and concrete testing.
+
+4. The specs could be made more readable.
+
+5. Make the app documentation.
+
+6. Make a gem out of this app.
+
+7. Have fun!
