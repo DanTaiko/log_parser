@@ -32,8 +32,9 @@ describe 'Line initialization' do
 end
 
 describe 'Line#to_s' do
+  let(:symbol) { 'symbol' }
   let(:title) { 'title' }
-  let(:line) { Line.new(symbol: 'symbol', title: title) }
+  let(:line) { Line.new(symbol: symbol, title: title) }
 
   it 'gives a meaningful string' do
     expect(line.to_s).to eq "#{title} 1"
@@ -41,5 +42,10 @@ describe 'Line#to_s' do
 
   it 'with postfix' do
     expect(line.to_s(postfix: 'postfix')).to eq "#{title} 1 postfix"
+  end
+
+  it 'without title' do
+    line = Line.new(symbol: symbol)
+    expect(line.to_s(postfix: 'postfix')).to eq "#{symbol} 1 postfix"
   end
 end
