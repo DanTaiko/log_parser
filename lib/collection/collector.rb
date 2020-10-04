@@ -11,8 +11,8 @@ class Collector
     validate_builder
   end
 
-  def add(symbol)
-    @members << builder.new(symbol: symbol)
+  def add(symbol, title = nil)
+    @members << builder.new(symbol: symbol, title: title)
   end
 
   def unify
