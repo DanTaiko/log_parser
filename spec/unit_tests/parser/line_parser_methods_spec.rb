@@ -49,7 +49,12 @@ describe 'LineParser#find_title' do
   end
 
   it 'return the founded title' do
-    expect(parser.find_symbol(file_line: @file_line)).to eq 'title'
+    expect(parser.find_title(file_line: @file_line)).to eq 'title'
+  end
+
+  it 'return nil if title_regex.nil?' do
+    parser = LineParser.new(symbol_regex: @symbol_regex)
+    expect(parser.find_title(file_line: @file_line)).to be_nil
   end
 end
 
@@ -63,8 +68,12 @@ describe 'LineParser#find_symbol_and_title' do
   let(:parser) { LineParser.new(symbol_regex: @symbol_regex, title_regex: @title_regex) }
 
   it 'calls #find_symbol and #find_title' do
-    expect(parser).to receive(:find_symbol).with(@file_line).once.and_return('symbol')
-    expect(parser).to receive(:find_title).with(@file_line).once.and_return('title')
-    expect(director.find_symbol_and_title).to eq %w[symbol title]
+    expect(parser).to receive(:find_symbol).with(file_line: @file_line).once
+    expect(parser).to receive(:find_title).with(file_line: @file_line).once
+    parser.find_symbol_and_title(file_line: @file_line)
+  end
+
+  it 'return teh correct "symbol" and "title"' do
+    expect(parser.find_symbol_and_title(file_line: @file_line)).to eq %w[symbol title]
   end
 end
