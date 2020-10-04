@@ -12,20 +12,24 @@ class FileParser
   end
 
   def self.build(file_path:, collector:, symbol_regex:)
-    new(file_path: file_path, collector: collector, line_parser: LineParser.new(symbol_regex: symbol_regex))
+    symbol_regex = [symbol_regex] unless symbol_regex.is_a?(Array)
+    symbol_regex, title_regex = symbol_regex
+    new(file_path: file_path,
+        collector: collector,
+        line_parser: LineParser.new(symbol_regex: symbol_regex, title_regex: title_regex))
   end
 
   def parse
     File.foreach(file_path) do |line|
-      symbol = line_parser.find_symbol(file_line: line)
-      add_to_collection(symbol)
+      symbol, title = line_parser.find_symbol_and_title(file_line: line)
+      add_to_collection(symbol, title)
     end
   end
 
   private
 
-  def add_to_collection(symbol)
-    @collector.add(symbol)
+  def add_to_collection(symbol, title)
+    @collector.add(symbol, title)
   rescue NoMethodError
     raise(ArgumentError, 'The collector can not add an symbol.')
   rescue ArgumentError
