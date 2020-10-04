@@ -11,7 +11,6 @@ class WebpagesDirector
   def initialize(file_path:, collector:)
     @file_path = file_path
     @collector = collector
-    @class_ref = self.class
   end
 
   def self.build(file_path:, builder: Line)
@@ -27,11 +26,12 @@ class WebpagesDirector
 
   private
 
+  attr_reader :collector
+
   def act
-    FileParser.build(file_path: file_path, collector: @collector, symbol_regex: @class_ref::SYMBOL_REGEX).parse
-    @collector.unify
-    lines = @collector.members
+    FileParser.build(file_path: file_path, collector: collector, symbol_regex: SYMBOL_REGEX).parse
+    lines = Grouper.build(method: :by_visits).group(collector.members)
     Sorter.new(arttibute: :amount).sort(lines)
-    Presenter.new(**@class_ref::PRINT_DETAILS).prints(lines: lines)
+    Presenter.new(**PRINT_DETAILS).prints(lines: lines)
   end
 end

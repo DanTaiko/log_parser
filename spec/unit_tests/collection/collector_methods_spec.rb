@@ -26,19 +26,3 @@ describe 'Collector#add' do
     expect(member.amount).to eq 1
   end
 end
-
-describe 'Collector#unify' do
-  before(:all) do
-    @builder = Line
-    @symbol = 'symbol'
-    @title = 'title'
-  end
-
-  let(:collector) { Collector.new(builder: @builder) }
-
-  it 'count uniq members' do
-    3.times { collector.add(@symbol) }
-    collector.unify
-    expect(collector.members.count).to eq 1
-  end
-end

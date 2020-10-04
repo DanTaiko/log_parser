@@ -12,12 +12,7 @@ class Collector
   end
 
   def add(symbol, title = nil)
+    title ||= symbol
     @members << builder.new(symbol: symbol, title: title)
-  end
-
-  def unify
-    @members = @members.group_by(&:symbol).each_with_object([]) do |(symbol, symbol_members), new_members|
-      new_members << builder.new(symbol: symbol, amount: symbol_members.count)
-    end
   end
 end

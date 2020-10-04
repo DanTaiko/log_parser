@@ -24,6 +24,7 @@ class FileParser
       symbol, title = line_parser.find_symbol_and_title(file_line: line)
       add_to_collection(symbol, title)
     end
+    @collector.members
   end
 
   private

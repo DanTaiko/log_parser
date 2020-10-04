@@ -21,16 +21,20 @@ describe 'LogParcer' do
 end
 
 describe 'LogParcer call the Director' do
+  before(:all) do
+    @file_path = 'spec/fixtures/files/webserver.log'
+  end
+
   let(:log_parcer) { LogParcer.new(file_path: @file_path) }
+
+  it 'for analyze' do
+    expect_any_instance_of(AnalyzeDirector).to receive(:validate_and_act).once
+    log_parcer.analyze
+  end
 
   it 'for webpages_rating' do
     expect_any_instance_of(WebpagesDirector).to receive(:validate_and_act).once
     log_parcer.webpages_rating
-  end
-
-  it 'for resources_rating' do
-    expect_any_instance_of(ResourcesDirector).to receive(:validate_and_act).once
-    log_parcer.resources_rating
   end
 
   it 'for resources_rating' do

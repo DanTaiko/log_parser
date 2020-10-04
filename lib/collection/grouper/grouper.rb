@@ -25,6 +25,7 @@ class Grouper
     end.new(builder: builder)
   end
 
+  # This method definition is only for the sake of interface description.
   def group
     raise(NotImplementedError)
   end

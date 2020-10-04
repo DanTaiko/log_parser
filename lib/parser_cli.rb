@@ -17,9 +17,9 @@ require './lib/log_parser.rb'
 #                             $ bin/parser unique_webpages_rating webserver.log
 #
 class ParserCLI < Thor
-  desc 'analyze [PATH/TO/FILE]', 'list of the webpages with visits and then list of the webpages with unique views'
+  desc 'analyze [PATH/TO/FILE]', 'list the webpages with visits and then list the webpages with unique views'
   long_desc <<-LONGDESC
-    This command will parse a logfile and list of the webpages with visits and then list of the webpages with unique views.
+    This command will parse a logfile and list the webpages with visits and then list the webpages with unique views.
 
     > $ bin/parser analyze webserver.log
 
@@ -28,9 +28,9 @@ class ParserCLI < Thor
     LogParcer.new(file_path: path).send(__method__)
   end
 
-  desc 'webpages_rating [PATH/TO/FILE]', 'list of webpages with most page views'
+  desc 'webpages_rating [PATH/TO/FILE]', 'list the webpages with most page views'
   long_desc <<-LONGDESC
-    This command will parse a logfile and list of the webpages with most page views ordered from most pages views to less page views.
+    This command will parse a logfile and list the webpages with most page views ordered from most pages views to less page views.
 
     > $ bin/parser webpages_rating webserver.log
 
@@ -39,9 +39,9 @@ class ParserCLI < Thor
     LogParcer.new(file_path: path).send(__method__)
   end
 
-  desc 'resources_rating [PATH/TO/FILE]', 'list of resources with most views'
+  desc 'resources_rating [PATH/TO/FILE]', 'list the resources with most views'
   long_desc <<-LONGDESC
-    This command will parse a logfile and list of resources with most views.
+    This command will parse a logfile and list the resources with most views.
 
     > $ bin/parser resources_rating webserver.log
 

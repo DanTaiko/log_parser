@@ -11,6 +11,11 @@ describe 'ParserCLI' do
   let(:parcer_cli) { ParserCLI.new }
 
   context 'call the LogParcer' do
+    it 'for analyze' do
+      expect_any_instance_of(LogParcer).to receive(:analyze).once
+      parcer_cli.analyze(@file_path)
+    end
+
     it 'for webpages_rating' do
       expect_any_instance_of(LogParcer).to receive(:webpages_rating).once
       parcer_cli.webpages_rating(@file_path)

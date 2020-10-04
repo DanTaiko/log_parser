@@ -3,27 +3,19 @@
 require 'spec_helper'
 
 describe 'WebpagesDirector' do
-  before(:all) do
-    @symbol_regex = /\A(?<symbol>\w+)/
-    @collector = Struct.new(:builder) do
-      def add(*) end
-    end.new
-    @file_path = 'spec/fixtures/files/webserver.log'
-  end
+  context 'validate_and_act' do
+    let(:director) { WebpagesDirector.build(file_path: 'spec/fixtures/files/webserver.log') }
 
-  context 'initialization' do
-    it 'keeping the file_path.' do
-      director = WebpagesDirector.new(file_path: @file_path, collector: @collector)
-      expect(director.file_path).to eq @file_path
+    it 'asking for the file validation' do
+      expect_any_instance_of(FilePresenceValidator).to receive(:valid?).once.and_return(false)
+      expect(director).not_to receive(:act)
+
+      expect { director.validate_and_act }.to raise_error(ArgumentError)
     end
 
-    it 'by build' do
-      director = WebpagesDirector.build(file_path: @file_path)
-      expect(director.file_path).to eq @file_path
-    end
-
-    it 'fails without file_path.' do
-      expect { WebpagesDirector.build }.to raise_error(ArgumentError)
+    it 'starting the show' do
+      expect(director).to receive(:act).once
+      director.validate_and_act
     end
   end
 end
