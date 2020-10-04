@@ -12,9 +12,9 @@ describe 'Integration' do
         .to_stdout_from_any_process
     end
 
-    it 'for unique_webpages_rating' do
-      output = File.read('spec/fixtures/files/unique_webpages_rating.out')
-      expect { system %(bin/parser unique_webpages_rating spec/fixtures/files/webserver.log) }
+    it 'for resources_rating' do
+      output = File.read('spec/fixtures/files/resources_rating.out')
+      expect { system %(bin/parser resources_rating spec/fixtures/files/webserver.log) }
         .to output(output)
         .to_stdout_from_any_process
     end

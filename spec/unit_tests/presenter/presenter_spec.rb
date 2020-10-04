@@ -19,7 +19,7 @@ describe 'Presenter' do
   end
 
   it 'print the result' do
-    output = File.read('spec/fixtures/files/webpages_rating.out')
+    output = File.read('spec/fixtures/files/presenter.out')
     expect { presenter.prints(lines: @lines) }
       .to output(output)
       .to_stdout_from_any_process

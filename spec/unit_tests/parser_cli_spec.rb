@@ -16,9 +16,9 @@ describe 'ParserCLI' do
       parcer_cli.webpages_rating(@file_path)
     end
 
-    it 'for unique_webpages_rating' do
-      expect_any_instance_of(LogParcer).to receive(:unique_webpages_rating).once
-      parcer_cli.unique_webpages_rating(@file_path)
+    it 'for resources_rating' do
+      expect_any_instance_of(LogParcer).to receive(:resources_rating).once
+      parcer_cli.resources_rating(@file_path)
     end
   end
 end

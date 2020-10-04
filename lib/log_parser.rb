@@ -12,7 +12,8 @@ require "#{APP_ROOT}parser/file_parser"
 require "#{APP_ROOT}parser/line_parser"
 require "#{APP_ROOT}presenter/presenter"
 require "#{APP_ROOT}directors/webpages_director"
-require "#{APP_ROOT}directors/unique_webpages_director"
+require "#{APP_ROOT}directors/analyze_director"
+require "#{APP_ROOT}directors/resources_director"
 require "#{APP_ROOT}collection/grouper/grouper"
 require "#{APP_ROOT}collection/grouper/visits_grouper"
 require "#{APP_ROOT}collection/grouper/views_grouper"
@@ -27,11 +28,15 @@ class LogParcer
     @file_path = file_path
   end
 
+  def analyze
+    AnalyzeDirector.build(file_path: @file_path).validate_and_act
+  end
+
   def webpages_rating
     WebpagesDirector.build(file_path: @file_path).validate_and_act
   end
 
-  def unique_webpages_rating
-    UniqueWebpagesDirector.build(file_path: @file_path).validate_and_act
+  def resources_rating
+    ResourcesDirector.build(file_path: @file_path).validate_and_act
   end
 end

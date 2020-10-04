@@ -18,16 +18,23 @@ describe 'LogParcer' do
       expect { LogParcer.new }.to raise_error(ArgumentError)
     end
   end
+end
 
-  context 'call the Director' do
-    it 'for webpages_rating' do
-      expect_any_instance_of(WebpagesDirector).to receive(:validate_and_act).once
-      log_parcer.webpages_rating
-    end
+describe 'LogParcer call the Director' do
+  let(:log_parcer) { LogParcer.new(file_path: @file_path) }
 
-    it 'for unique_webpages_rating' do
-      expect_any_instance_of(UniqueWebpagesDirector).to receive(:validate_and_act).once
-      log_parcer.unique_webpages_rating
-    end
+  it 'for webpages_rating' do
+    expect_any_instance_of(WebpagesDirector).to receive(:validate_and_act).once
+    log_parcer.webpages_rating
+  end
+
+  it 'for resources_rating' do
+    expect_any_instance_of(ResourcesDirector).to receive(:validate_and_act).once
+    log_parcer.resources_rating
+  end
+
+  it 'for resources_rating' do
+    expect_any_instance_of(ResourcesDirector).to receive(:validate_and_act).once
+    log_parcer.resources_rating
   end
 end

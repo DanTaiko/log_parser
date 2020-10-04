@@ -3,7 +3,7 @@
 ##
 # The WebpagesDirector runs the show for the 'webpages_rating' command
 class WebpagesDirector
-  SYMBOL_REGEX = %r{\A(?<symbol>\/[a-z\_]+)(\/\d+)?\s}.freeze
+  SYMBOL_REGEX = %r{\A(?<symbol>\/[a-z\_]+(\/\d+)?)\s}.freeze
   PRINT_DETAILS = { header: 'webpages_rating', line_postfix: 'visits' }.freeze
 
   attr_reader :file_path
