@@ -8,14 +8,16 @@ describe 'SymbolRegexValidator initialization' do
     @symbol_regex = /\A(?<symbol>\w+)/
   end
 
-  let(:validator) { SymbolRegexValidator.new(symbol_regex: @symbol_regex, symbol_attr: symbol_attr) }
+  let(:validator) { SymbolRegexValidator.new(symbol_regex: @symbol_regex, symbol_attr: @symbol_attr) }
 
   it 'keeping the symbol_regex value' do
     expect(validator.symbol_regex).to eq @symbol_regex
   end
 
   it 'keeping the symbol_attr value' do
-    expect(validator.symbol_attr).to eq @symbol_attr
+    symbol_attr = 'title'
+    validator = SymbolRegexValidator.new(symbol_regex: @symbol_regex, symbol_attr: symbol_attr)
+    expect(validator.symbol_attr).to eq symbol_attr
   end
 
   it 'fails without symbol_regex' do
@@ -27,17 +29,31 @@ describe 'SymbolRegexValidator initialization' do
   end
 end
 
-describe 'SymbolRegexValidator#valid?' do
+describe 'SymbolRegexValidator#valid? pass' do
   before(:all) do
     @symbol_attr = 'symbol'
     @symbol_regex = /\A(?<symbol>\w+)/
   end
 
-  let(:validator) { SymbolRegexValidator.new(symbol_regex: @symbol_regex, symbol_attr: symbol_attr) }
+  let(:validator) { SymbolRegexValidator.new(symbol_regex: @symbol_regex, symbol_attr: @symbol_attr) }
 
   it 'pass for valid regex' do
-    expect(validator.valid?).to be_falsey
+    expect(validator.valid?).to be_truthy
   end
+
+  it 'pass for valid regex even initialized without explicit "symbol_attr"' do
+    validator = SymbolRegexValidator.new(symbol_regex: @symbol_regex)
+    expect(validator.valid?).to be_truthy
+  end
+end
+
+describe 'SymbolRegexValidator#valid? fails' do
+  before(:all) do
+    @symbol_attr = 'symbol'
+    @symbol_regex = /\A(?<symbol>\w+)/
+  end
+
+  let(:validator) { SymbolRegexValidator.new(symbol_regex: @symbol_regex, symbol_attr: @symbol_attr) }
 
   it 'fails with symbol_regex that is missing a "symbol" named_captures' do
     regex = /\w+/
