@@ -8,7 +8,7 @@ class Collector
   def initialize(builder:)
     @builder = builder
     @members = []
-    validate_builder
+    LineBuilderValidator.new(builder: builder).check_with_error
   end
 
   def add(symbol, title = nil)
@@ -19,15 +19,5 @@ class Collector
     @members = @members.group_by(&:symbol).each_with_object([]) do |(symbol, symbol_members), new_members|
       new_members << builder.new(symbol: symbol, amount: symbol_members.count)
     end
-  end
-
-  private
-
-  def validate_builder
-    builder.new(symbol: 'symbol', amount: 5)
-  rescue NoMethodError
-    raise(ArgumentError, 'The builder can not initiate an object.')
-  rescue ArgumentError
-    raise(ArgumentError, 'The builder can not initiate an object with the "symbol" and "amount" attributes.')
   end
 end
