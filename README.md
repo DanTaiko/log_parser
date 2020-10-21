@@ -2,7 +2,7 @@
 
 Heavy metal log parser is my try to write a ruby script.
 
-## Version 0.1.3-a.1
+## Version 0.1.4-a.1
 
 The alpha-version is for demonstrating my programmer skills.
 
@@ -55,6 +55,8 @@ Run HELP for the command delails
 **parser help [COMMAND]**                   # Describe available commands or one specific command
 
 **parser analyze [PATH/TO/FILE]**           # list the webpages with visits and then list the webpages with unique views
+
+**parser average_rating [PATH/TO/FILE]**    # list the resources with most views
 
 **parser resources_rating [PATH/TO/FILE]**  # list the resources with most views
 

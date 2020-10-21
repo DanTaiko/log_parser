@@ -14,11 +14,13 @@ require "#{APP_ROOT}presenter/presenter"
 require "#{APP_ROOT}directors/webpages_director"
 require "#{APP_ROOT}directors/resources_director"
 require "#{APP_ROOT}directors/analyze_director"
+require "#{APP_ROOT}directors/average_director"
 require "#{APP_ROOT}directors/analyze_director_presenter"
 require "#{APP_ROOT}collection/grouper/grouper"
 require "#{APP_ROOT}collection/grouper/visits_grouper"
 require "#{APP_ROOT}collection/grouper/views_grouper"
 require "#{APP_ROOT}collection/grouper/resource_grouper"
+require "#{APP_ROOT}collection/grouper/average_grouper"
 
 ##
 # The LogParcer acts as the app configuration.
@@ -33,11 +35,15 @@ class LogParcer
     AnalyzeDirector.build(file_path: @file_path).validate_and_act
   end
 
-  def webpages_rating
-    WebpagesDirector.build(file_path: @file_path).validate_and_act
+  def average_rating
+    AverageDirector.build(file_path: @file_path).validate_and_act
   end
 
   def resources_rating
     ResourcesDirector.build(file_path: @file_path).validate_and_act
+  end
+
+  def webpages_rating
+    WebpagesDirector.build(file_path: @file_path).validate_and_act
   end
 end

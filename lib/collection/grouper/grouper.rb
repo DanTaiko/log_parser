@@ -3,6 +3,13 @@
 ##
 # The Grouper is abstract class that initiates a concrete grouper.
 class Grouper
+  GROUPERS = {
+    by_visits: 'VisitsGrouper',
+    by_uniq_views: 'ViewsGrouper',
+    by_resource: 'ResourceGrouper',
+    by_average: 'AverageGrouper'
+  }.freeze
+
   attr_reader :builder
 
   def initialize(builder: Line)
@@ -13,16 +20,10 @@ class Grouper
   end
 
   def self.build(method:, builder: Line)
-    case method.to_sym
-    when :by_visits
-      VisitsGrouper
-    when :by_uniq_views
-      ViewsGrouper
-    when :by_resource
-      ResourceGrouper
-    else
-      raise(NotImplementedError)
-    end.new(builder: builder)
+    grouper = GROUPERS[method.to_sym]
+    raise(NotImplementedError) unless grouper
+
+    Object.const_get(grouper).new(builder: builder)
   end
 
   # This method definition is only for the sake of interface description.
