@@ -5,10 +5,8 @@
 class AverageGrouper < Grouper
   def group(collection)
     collection.group_by(&:title).each_with_object([]) do |(title, symbol_members), members|
-      views = symbol_members.count
-      uniq_views = symbol_members.map(&:symbol).uniq.count
       members << builder.new(symbol: title,
-                             amount: (views / uniq_views.to_f).round(2))
+                             amount: GrouperCalculations.find_avagare_views(symbol_members))
     end
   end
 end

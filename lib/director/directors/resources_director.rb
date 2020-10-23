@@ -2,7 +2,8 @@
 
 ##
 # The ResourcesDirector runs the show for the 'resources_rating' command
-class ResourcesDirector < WebpagesDirector
+class ResourcesDirector < Director
+  SYMBOL_REGEX = %r{\A(?<symbol>\/[a-z\_]+(\/\d+)?)\s}.freeze
   PRINT_DETAILS = { header: 'resources_rating', line_postfix: 'visits' }.freeze
 
   private

@@ -2,7 +2,7 @@
 
 ##
 # The AnalyzeDirector runs the show for the 'analyze' command
-class AnalyzeDirector < WebpagesDirector
+class AnalyzeDirector < Director
   URL_REGEX = %r{\A(?<title>\/[a-z\_]+(\/\d+)?)\s}.freeze
   IP_REGEX = /(?<symbol>\d{1,3}(\.\d{1,3}){3})$/.freeze
 

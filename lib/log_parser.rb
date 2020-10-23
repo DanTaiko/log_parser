@@ -1,26 +1,6 @@
 # frozen_string_literal: true
 
-APP_ROOT = './lib/'
-
-require "#{APP_ROOT}models/line"
-require "#{APP_ROOT}collection/collector"
-require "#{APP_ROOT}collection/sorter"
-require "#{APP_ROOT}validators/file_presence_validator"
-require "#{APP_ROOT}validators/symbol_regex_validator"
-require "#{APP_ROOT}validators/line_builder_validator"
-require "#{APP_ROOT}parser/file_parser"
-require "#{APP_ROOT}parser/line_parser"
-require "#{APP_ROOT}presenter/presenter"
-require "#{APP_ROOT}directors/webpages_director"
-require "#{APP_ROOT}directors/resources_director"
-require "#{APP_ROOT}directors/analyze_director"
-require "#{APP_ROOT}directors/average_director"
-require "#{APP_ROOT}directors/analyze_director_presenter"
-require "#{APP_ROOT}collection/grouper/grouper"
-require "#{APP_ROOT}collection/grouper/visits_grouper"
-require "#{APP_ROOT}collection/grouper/views_grouper"
-require "#{APP_ROOT}collection/grouper/resource_grouper"
-require "#{APP_ROOT}collection/grouper/average_grouper"
+Dir[Dir.pwd + '/lib/**/*.rb'].sort.each { |f| require f }
 
 ##
 # The LogParcer acts as the app configuration.

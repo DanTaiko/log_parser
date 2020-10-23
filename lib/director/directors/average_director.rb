@@ -2,7 +2,7 @@
 
 ##
 # The AverageDirector runs the show for the 'average_rating' command
-class AverageDirector < WebpagesDirector
+class AverageDirector < Director
   URL_REGEX = %r{\A(?<title>\/[a-z\_]+(\/\d+)?)\s}.freeze
   IP_REGEX = /(?<symbol>\d{1,3}(\.\d{1,3}){3})$/.freeze
   PRINT_DETAILS = { header: 'average_rating', line_postfix: 'average page views' }.freeze

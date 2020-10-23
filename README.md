@@ -2,7 +2,7 @@
 
 Heavy metal log parser is my try to write a ruby script.
 
-## Version 0.1.4-a.1
+## Version 0.1.5-a.1
 
 The alpha-version is for demonstrating my programmer skills.
 
@@ -77,12 +77,6 @@ Run RSPEC in the log_parser directory
 
 2. The Line class should be splitted into the LogLine and PrintLine classes.
 
-3. Do more integration and concrete testing.
+3. The specs could be made more readable.
 
-4. The specs could be made more readable.
-
-5. Make the app documentation.
-
-6. Make a gem out of this app.
-
-7. Have fun!
+4. Make the app documentation.
